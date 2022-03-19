@@ -5,13 +5,13 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import {useEffect, useState } from 'react';
 import axios from 'axios';
 import Description from '../DescriptionComponnet/Description';
+import Pagination from './Pagination';
 
 
 
 const Main = () => {
   const [data, setData] = useState(null)
-
-  const fetchData = async () => {
+    const fetchData = async () => {
       await axios.get('https://localhost:44371/api/pontosturisticos')
       .then((response)=> {
         setData(response.data)    
@@ -19,6 +19,7 @@ const Main = () => {
       
   }
 
+//filtro
   const [changeTarget, setchangeTarget] = useState('')
   const handleChange = (event) => {
     const {value} = event.target
@@ -34,15 +35,50 @@ const Main = () => {
     })    
 }
 
+// paginação 
+    
+    const [pagination, setpagination] = useState(null)
+    const [virtualPage, setVirtualPage] = useState(0)
+    
+    const pageCurrent = async () => {
+      await axios.get(`https://localhost:44371/api/PontosTuristicos/skip/${virtualPage}/take/${2}`)
+      .then ((response) =>  setpagination(response.data))
+    }
+
+    if (pagination && virtualPage == pagination.totalCount) {
+      setVirtualPage(0)
+    }
+
+    const paginationNext = () => {
+      setVirtualPage(virtualPage + 2 )
+    }
+
+    const paginationBack = () => {
+      if (virtualPage <= 0) {
+        setVirtualPage(pagination.totalCount - 2)
+      } else {
+        setVirtualPage(virtualPage - 2)
+      }    
+  }
+
+   
+    
+    
+    
+
   useEffect(()=> {
     fetchData()
+    pageCurrent()
     
-  },[])
+    
+    
+  },[virtualPage])
 
   if (data === null) return null
+  if (pagination === null) return null
  
   return (
-    <div className={styles.conteiner}>
+    <div className={styles.conteiner}>        
         <div className={styles.filterBox}>
             <input placeholder='Digite um termo para buscar um ponto turístico' onChange={handleChange} className={styles.inputFilter}/>
             <button  onClick={testeFilter}  className={styles.buttonFilter}>Buscar</button>
@@ -55,11 +91,16 @@ const Main = () => {
 
             {fetchFilter ? fetchFilter.map((e)=> {
               return <Link key={e.id} to={`/${e.id}`}><Home  name= {e.name} localizacao={e.endereco}/></Link>
-            }) :  data.map((e)=> {
+            })  : pagination.dados.map((e)=> {
               return <Link key={e.id} to={`/${e.id}`}><Home  name= {e.name} localizacao={e.endereco}/></Link>
-            })}  
+            })}
             
 
+        </div>
+        
+        <div className={styles.footerButton}>
+          <button className={styles.buttonFilter} onClick={paginationBack}>Anterior</button>
+          <button className={styles.buttonFilter} onClick={paginationNext}>Próximo</button>
         </div>
     </div>
    

@@ -1,0 +1,20 @@
+.conteiner {
+    width: 95%;    
+    box-shadow: 2px 2px 10px #CCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.conteiner:hover {
+    padding: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.title {
+    margin: 15px 0;   
+   
+}

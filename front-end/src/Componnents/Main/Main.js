@@ -5,7 +5,7 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import {useEffect, useState } from 'react';
 import axios from 'axios';
 import Description from '../DescriptionComponnet/Description';
-import Pagination from './Pagination';
+
 
 
 
@@ -45,20 +45,18 @@ const Main = () => {
       .then ((response) =>  setpagination(response.data))
     }
 
-    if (pagination && virtualPage == pagination.totalCount) {
-      setVirtualPage(0)
-    }
+    
 
     const paginationNext = () => {
-      setVirtualPage(virtualPage + 2 )
+      if (virtualPage < (pagination.totalCount - 2)) {
+        setVirtualPage(virtualPage + 2 )
+      }
     }
 
     const paginationBack = () => {
-      if (virtualPage <= 0) {
-        setVirtualPage(pagination.totalCount - 2)
-      } else {
+      if (virtualPage > 0) {
         setVirtualPage(virtualPage - 2)
-      }    
+      }     
   }
 
    

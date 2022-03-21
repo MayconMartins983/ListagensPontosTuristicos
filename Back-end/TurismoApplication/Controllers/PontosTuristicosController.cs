@@ -23,7 +23,7 @@ namespace TurismoApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IAsyncEnumerable<PontoTuristico>>> GetCLientesGetPontoTuristico()
+        public async Task<ActionResult<IAsyncEnumerable<PontoTuristico>>> GetPontoTuristico()
         {
             try
             {

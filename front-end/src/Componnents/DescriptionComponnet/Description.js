@@ -6,16 +6,13 @@ import axios from 'axios';
 
 
 const Description = () => {
-  const [loading, setLoading] = useState(false)
   const [data, setData] = useState(null)
   const {id} = useParams()
 
   const fetchDataByID = async () => {
     try {
-      await axios.get(`https://localhost:44371/api/pontosturisticos/${id}`)
-    .then((response)=> {
-      setData(response.data)    
-    })
+      const response = await axios.get(`https://localhost:44371/api/pontosturisticos/${id}`)
+      setData(response.data) 
   } catch(error) {
     console.log(error)
   } 
@@ -24,10 +21,8 @@ const Description = () => {
   const [secondData, setSecondData] = useState(null)
   const fetchSecondApi =  async () => {
     try { 
-      await axios.get(`https://localhost:44371/api/pontosturisticos`)
-    .then((response)=> {
+      const response = await axios.get(`https://localhost:44371/api/pontosturisticos`)
       setSecondData(response.data)  
-    })
   } catch(error) {
     console.log(error)
   } 

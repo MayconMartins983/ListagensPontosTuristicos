@@ -17,31 +17,13 @@ namespace TurismoApplication.Services
         }
         public async Task<IEnumerable<PontoTuristico>> GetPontoTuristico()
         {
-            try
-            {
+            
                 return await _context.PontosTuristicos.ToListAsync();
-            }
-            catch
-            {
-                throw;
-            }
+           
         }
         public async Task<PontoTuristico> GetPontoTuristico(int Id)
         {
             var pontoturistico = await _context.PontosTuristicos.FindAsync(Id);
-            return pontoturistico;
-        }
-        public async Task<IEnumerable<PontoTuristico>> GetPontoTuristicoByName(string name)
-        {
-            IEnumerable<PontoTuristico> pontoturistico;
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                pontoturistico = await _context.PontosTuristicos.Where(n => n.Name.Contains(name)).ToListAsync();                
-            }
-            else
-            {
-                pontoturistico = await GetPontoTuristico();
-            }
             return pontoturistico;
         }
        
@@ -51,24 +33,6 @@ namespace TurismoApplication.Services
             _context.PontosTuristicos.Add(pontoTuristico);
             await _context.SaveChangesAsync();
         }
-        public async Task UpdatePontoTuristico(PontoTuristico pontoTuristico)
-        {
-            _context.Entry(pontoTuristico).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeletePontoTuristico(PontoTuristico pontoTuristico)
-        {
-            _context.PontosTuristicos.Remove(pontoTuristico);
-            await _context.SaveChangesAsync(); ;
-        }
-
-        
-
-       
-
-       
-
-        
+  
     }
 }

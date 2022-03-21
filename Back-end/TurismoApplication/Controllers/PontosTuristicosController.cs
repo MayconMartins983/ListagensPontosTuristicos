@@ -36,21 +36,7 @@ namespace TurismoApplication.Controllers
             }
         }
 
-        [HttpGet("PontoTuristicoPorName")]
-        public async Task<ActionResult<IAsyncEnumerable<PontoTuristico>>> GetPontoTuristicoByName([FromQuery] string name)
-        {
-            try
-            {
-                var pontoTuristico = await _pontoTuristicoService.GetPontoTuristicoByName(name);
-                if (pontoTuristico.Count() == 0)
-                    return NotFound($"Não Existem clientes com o critério {name}");
-                return Ok(pontoTuristico);
-            }
-            catch
-            {
-                return BadRequest("Request invalido");
-            }
-        }
+       
 
         [HttpGet("skip/{skip}/take/{take}")]
         public async Task<IActionResult> GetAsync (
@@ -59,8 +45,8 @@ namespace TurismoApplication.Controllers
                 int take = 2)
         {
             var totalCount = await context.PontosTuristicos.CountAsync();
-            var pontosturisticos = await context.PontosTuristicos
-                .AsNoTracking()
+            var pontosturisticos = await context.PontosTuristicos             
+                .AsNoTracking()                
                 .Skip(skip)
                 .Take(take)
                 .ToListAsync();
@@ -99,51 +85,6 @@ namespace TurismoApplication.Controllers
                 return BadRequest("Request invalido");
             }
         }
-
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult> Edit(int id, [FromBody] PontoTuristico pontoTuristico)
-        {
-            try
-            {
-                if (pontoTuristico.Id == id)
-                {
-                    await _pontoTuristicoService.UpdatePontoTuristico(pontoTuristico);
-                    return NoContent();
-                }
-                else
-                {
-                    return BadRequest("Dados invalidos");
-                }
-            }
-            catch
-            {
-                return BadRequest("Request invalido");
-            }
-        }
-
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult> Delete(int id)
-        {
-            try
-            {
-                var pontoTuristico = await _pontoTuristicoService.GetPontoTuristico(id);
-                if (pontoTuristico != null)
-                {
-                    await _pontoTuristicoService.DeletePontoTuristico(pontoTuristico);
-                    return Ok($"O Ponto turístico de id={id} foi excluido com sucesso!!!");
-                }
-
-                else
-                {
-                    return NotFound($"Ponto turístico com id={id} não foi encontrado no nosso banco de dados");
-                }
-            }
-            catch
-            {
-                return BadRequest("Request invalido");
-            }
-        }
-
 
     }
 }

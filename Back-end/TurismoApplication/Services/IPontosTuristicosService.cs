@@ -11,12 +11,8 @@ namespace TurismoApplication.Services
         Task<IEnumerable<PontoTuristico>> GetPontoTuristico();
         Task<PontoTuristico> GetPontoTuristico (int Id);
 
-        Task<IEnumerable<PontoTuristico>> GetPontoTuristicoByName(string name);
-
         Task CreatePontoTuristico(PontoTuristico pontoTuristico);
 
-        Task UpdatePontoTuristico(PontoTuristico pontoTuristico);
-
-        Task DeletePontoTuristico(PontoTuristico pontoTuristico);
+        
     }
 }

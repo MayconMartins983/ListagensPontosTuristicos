@@ -4,7 +4,7 @@ import Home from '../HomeComponnent/Home.js';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import {useEffect, useState } from 'react';
 import axios from 'axios';
-import Loading from '../Loading/Loading';
+
 
 
 const Main = () => {
@@ -44,17 +44,14 @@ const Main = () => {
   const totalPage = 3
 
   const pageCurrent = async () => {
-    try {
-      setLoading(true)
+    try { 
       const response = await axios.get(`https://localhost:44371/api/PontosTuristicos/skip/${virtualPage}/take/${totalPage}`)
       setpagination(response.data)
     }
     catch(error) {
     console.log(error)
-  } finally{
-    setLoading(false)
   }
-}  
+} 
 
   const paginationNext = () => {
     if (virtualPage < (pagination.totalCount - totalPage)) {
@@ -68,17 +65,12 @@ const Main = () => {
     }     
 }
 
-//Loading
-const [loading, setLoading] = useState(false)
-  
-
   useEffect(()=> {
     pageCurrent()
     searchData()
     dadosTratados()
   },[virtualPage, inputValueFilter ])
-
-  if (loading) return <Loading />
+ 
   if (getData === null) return null 
   if (pagination === null) return null
  

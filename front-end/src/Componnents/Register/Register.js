@@ -3,8 +3,6 @@ import styles from './register.module.css';
 import {Link} from "react-router-dom";
 import axios from 'axios';
 
-
-
 const Register = () => {
     const [selectFields, SetSelectFields] = useState({
         name:'',
@@ -20,14 +18,10 @@ const Register = () => {
             ...selectFields, [name]:value
             
         })
-        
     }
 
-    
     const [data, setData] = useState('')
-
     const createPontoTuristico = async () => {
-        
         delete selectFields.id;        
         await axios.post('https://localhost:44371/api/pontosturisticos', selectFields)
         .then((response)=> {
@@ -37,33 +31,10 @@ const Register = () => {
         })  
     } 
 
-    const handleClick = () => {    
-        axios.put('https://localhost:44371/api/pontosturisticos' + "/" + selectFields.id, selectFields)
-        .then ((response)=> {
-            const resposta = response.data
-            const dataAuxiliar = data
-            dataAuxiliar.map((item)=> {
-                if(item.id===selectFields.id){
-                    item.name = resposta.name
-                    item.email = resposta.email
-                    item.tel = resposta.tel
-                }
-                
-            })
-            
-            
-        }).catch((error)=>{
-            console.log(error)
-        })
-  } 
- 
-    
-    
-   
 
   return (    
     <div className={styles.register}>
-
+        
         <div className={styles.title}>
             <h1 >Cadastro de pontos turísticos</h1>
         </div>
@@ -85,7 +56,7 @@ const Register = () => {
          
             <label  
                 htmlFor='endereco'>
-                Endereço/ Referência do Ponto turístico: 
+                Localização/ Referência do ponto turístico: 
             </label>
 
             <input  
@@ -100,7 +71,7 @@ const Register = () => {
                 >
                 Estado: 
             </label>
-            <select  name='estado' className={styles.inputs}  onChange= {handleChange} value={selectFields.estado}>
+            {<select  name='estado' className={styles.inputs}  onChange= {handleChange} value={selectFields.estado}>
                 <option value=''>Selecione um Estado</option>                    
                 <option value='AC'>AC</option>                    
                 <option value='AL'>AL</option>                    
@@ -129,7 +100,7 @@ const Register = () => {
                 <option value='SP'>SP</option>                    
                 <option value='SE'>SE</option>                    
                 <option value='TO'>TO</option>                    
-    </select>     
+            </select>   }   
                                 
             <label  
                 htmlFor='cidade'>

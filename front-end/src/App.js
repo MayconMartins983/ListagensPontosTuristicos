@@ -10,13 +10,11 @@ import Description from './Componnents/DescriptionComponnet/Description.js';
 function App() {
   return (
     <BrowserRouter>  
-    <Header /> 
-    
+    <Header />     
     <Routes>      
         <Route path='/' element={<Main />} />  
         <Route path='/register' element={<Register />} />             
-        <Route path='/:id' element={<Description />} />             
-                
+        <Route path='/:id' element={<Description />} />                       
     </Routes>    
     </BrowserRouter>
   );

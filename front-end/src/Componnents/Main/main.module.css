@@ -1,7 +1,7 @@
 .conteiner {
     width: 100%;
-    
 }
+
 .main {    
     flex-grow: 1;
     display: flex;
@@ -9,19 +9,16 @@
     width: 90%;
     margin: 5vh auto;
     padding: 50px;
-    box-shadow: 2px 2px 10px rgb(95, 92, 92);
+    box-shadow: 2px 2px 10px #0c282b;
     gap: 25px;
-    
-    
 }
 
- 
 .buttonFilter {
     margin-left: 20px;
     border-style: none;
     height: 40px;
     padding: 6px 12px;
-    background-color: #048af0;
+    background-color: #207178;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -31,18 +28,26 @@
 }
 
 .inputFilter {
-    height: 40px;
+    height: 45px;
     border-radius: 10px;
     padding-left: 8px;
-    width: 30%;
+    width: 25%;
+    font-size: 20px;   
+}
+
+.inputFilter::placeholder {
+    padding: 5px 0 0 2px;
+    font-size: 20px;
+    width: 100%;
 }
 
 .filterBox{
     align-items: center;
     display: flex;
     width: 90%; 
-    margin: 50px 0 0 5% ;
+    margin: 50px 0 0 -35px ;
     width: 100%;
+    justify-content: center;
 }
 
 .footerButton {

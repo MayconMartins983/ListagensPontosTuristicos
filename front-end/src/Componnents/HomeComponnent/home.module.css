@@ -1,6 +1,6 @@
 .conteiner {
     width: 95%;    
-    box-shadow: 2px 2px 10px #CCC;
+    box-shadow: 2px 2px 10px rgb(156, 156, 170);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,6 +15,9 @@
 }
 
 .title {
-    margin: 15px 0;   
-   
+    margin: 25px 0;    
+}
+
+p {
+    margin: 10px 0 30px 0 ;
 }

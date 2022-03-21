@@ -15,7 +15,7 @@ descrição.</p>
 <p> Abra a pasta do front end no vs code, verifique se voce tem o node installado na maquina </p>
 <p> abra o terminal e execute npm install, depois de terminado execute npm start </p>
 <p> Cadastre uma boa quantidade de pontos turisticos para verificar o layout do site</p>
-<p> </p>
+<p> Se for cadastrar pelo swagger exclua o id e deixe o estado apenas com 2 letras </p>
 <p> </p>
 <p> </p>
 

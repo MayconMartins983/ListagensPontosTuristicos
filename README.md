@@ -1,7 +1,6 @@
 <h1>Projeto de listagem de Pontos Turísticos </h1>
 <p> Para criação deste projeto foi utilizado React Js e asp_net para o back end </p>
-<p>Se trata de um projeto onde é possível cadastrar e listar pontos turísticos. Também é possivel filtrar os pontos através de palavras encontradas no nome, localização e 
-descrição.</p>
+<p>Se trata de um projeto onde é possível cadastrar e listar pontos turísticos de forma paginada. Também é possivel filtrar os pontos através de palavras encontradas no nome, localização e descrição.</p>
 
 <h2>Requisitos e passo a passo para rodar este projeto </h2>
 <p>- Foi ultilizado neste projeto o visual studio 2019  para o back e visual studio code para o front, além de ter que possuir instalado o sql server na sua maquina</p>
@@ -16,6 +15,8 @@ descrição.</p>
 <p> abra o terminal e execute npm install, depois de terminado execute npm start </p>
 <p> Cadastre uma boa quantidade de pontos turisticos para verificar o layout do site</p>
 <p> Se for cadastrar pelo swagger exclua o id e deixe o estado apenas com 2 letras </p>
-<p> </p>
-<p> </p>
+<h2> Imagens do projeto </h2>
+<div> <img src='https://user-images.githubusercontent.com/90580797/161433052-8a761017-e00d-4961-9df9-126a61fe5ea5.png' /></div>
+<br />
+<div> <img src='https://user-images.githubusercontent.com/90580797/161433056-c7801e09-1340-4f95-9b85-b23009329eb7.png' /></div>
 
